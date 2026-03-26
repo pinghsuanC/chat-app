@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+*.local
+
+# Secrets
+supabase-password-chatapp.txt
