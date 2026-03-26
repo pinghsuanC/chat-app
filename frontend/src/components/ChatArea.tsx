@@ -9,9 +9,10 @@ const ME: User = { id: 0, name: 'You', avatar: 'Me' }
 
 interface ChatAreaProps {
   contact: User
+  onBack?: () => void
 }
 
-export function ChatArea({ contact }: ChatAreaProps) {
+export function ChatArea({ contact, onBack }: ChatAreaProps) {
   const { t } = useTranslation()
   const { getMessages, sendMessage: send } = useConversation()
   const [input, setInput] = useState('')
@@ -32,6 +33,19 @@ export function ChatArea({ contact }: ChatAreaProps) {
   return (
     <main className="flex flex-col flex-1 min-w-0">
       <header className="flex items-center gap-3 px-4 h-12 shrink-0 shadow-sm border-b" style={{ background: 'var(--color-bg)', borderColor: 'var(--color-headerBorder)' }}>
+        {onBack && (
+          <button
+            onClick={onBack}
+            className="md:hidden p-1 rounded mr-1"
+            style={{ color: 'var(--color-textMuted)' }}
+            onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-textPrimary)')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-textMuted)')}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+              <path fillRule="evenodd" d="M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.06 0z" clipRule="evenodd" />
+            </svg>
+          </button>
+        )}
         <div className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold text-white" style={{ background: 'var(--color-accent)' }}>
           {contact.avatar}
         </div>

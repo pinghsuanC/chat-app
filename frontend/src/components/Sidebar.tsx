@@ -30,7 +30,7 @@ export function Sidebar({ contacts, activeContact, onContactSelect }: SidebarPro
   }, [])
 
   return (
-    <aside className="flex flex-col w-60 shrink-0" style={{ background: 'var(--color-sidebar)' }}>
+    <aside className="flex flex-col w-full h-full" style={{ background: 'var(--color-sidebar)' }}>
       <div className="p-3 relative" ref={searchRef}>
         <input
           className="w-full text-sm px-3 py-2 rounded-md outline-none"
