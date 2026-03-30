@@ -1,6 +1,9 @@
 # Secrets
 supabase-password-chatapp.txt
 
+# Claude
+.claude/
+
 # Dependencies
 node_modules/
 

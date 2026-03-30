@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "discordup-backend",
   "version": "1.0.0",
   "description": "Node.js + TypeScript backend",
   "main": "dist/index.js",
@@ -9,16 +9,26 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "ioredis": "^5.4.2",
+    "jsonwebtoken": "^9.0.3",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
     "pg": "^8.13.3"
   },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^22.13.10",
+    "@types/passport": "^1.0.17",
+    "@types/passport-google-oauth20": "^2.0.17",
+    "@types/passport-local": "^1.0.38",
     "@types/pg": "^8.11.11",
     "tsx": "^4.19.2",
     "typescript": "^5.8.2"
