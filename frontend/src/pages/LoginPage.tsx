@@ -3,13 +3,14 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { Toolbar } from '../components/Toolbar'
 import { FormField } from '../components/FormField'
+import { Divider } from '../components/Divider'
 
 export function LoginPage() {
   const { t } = useTranslation()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  function handleSubmit(e: React.FormEvent) {
+  const handleSubmit: React.ComponentProps<'form'>['onSubmit'] = (e) => {
     e.preventDefault()
     // TODO: implement email/password auth
   }
@@ -19,7 +20,7 @@ export function LoginPage() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen" style={{ background: 'var(--color-bg)' }}>
+    <div className="flex flex-col h-full overflow-y-auto" style={{ background: 'var(--color-bg)' }}>
       <Toolbar />
       <div className="flex flex-1 items-center justify-center">
         <div className="w-full max-w-md mx-4 rounded-lg p-8 shadow-lg" style={{ background: 'var(--color-sidebar)' }}>
@@ -41,24 +42,19 @@ export function LoginPage() {
 
             <button
               type="submit"
-              className="w-full py-2.5 rounded-md text-sm font-semibold text-white mt-2 transition-opacity hover:opacity-90"
+              className="w-full py-2.5 rounded-md text-sm font-semibold text-white mt-2 transition-opacity hover:opacity-90 cursor-pointer"
               style={{ background: 'var(--color-accent)' }}
             >
               {t('AUTH.LOGIN')}
             </button>
           </form>
 
-          {/* Divider */}
-          <div className="flex items-center gap-3 my-6">
-            <div className="flex-1 h-px" style={{ background: 'var(--color-headerBorder)' }} />
-            <span className="text-xs" style={{ color: 'var(--color-textMuted)' }}>{t('AUTH.OR')}</span>
-            <div className="flex-1 h-px" style={{ background: 'var(--color-headerBorder)' }} />
-          </div>
+          <Divider label={t('AUTH.OR')} />
 
           {/* Google button */}
           <button
             onClick={handleGoogleLogin}
-            className="w-full flex items-center justify-center gap-3 py-2.5 rounded-md text-sm font-medium transition-colors border"
+            className="w-full flex items-center justify-center gap-3 py-2.5 rounded-md text-sm font-medium transition-colors border cursor-pointer"
             style={{
               background: 'transparent',
               color: 'var(--color-textBody)',

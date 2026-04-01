@@ -118,6 +118,20 @@ API keys are for machine-to-machine communication. JWT is for identifying a huma
 
 ---
 
+## Known Issues & Fixes
+
+### React Router v7 — `<Link>` not navigating
+**Symptom:** Clicking a `<Link>` is visible and responds to hover/click, but does not redirect to the target route.
+
+**Root cause:** `@types/react-router-dom` v5.3.3 was installed as a dev dependency. This is the type package for React Router v5 and conflicts with React Router v7, which ships its own types. The conflicting types can interfere with how the router resolves and handles navigation.
+
+**Fix:** Remove the stale type package — React Router v7 does not need it.
+```bash
+npm uninstall @types/react-router-dom
+```
+
+---
+
 ## Todo
 - [ ] Finalize database schema
 - [ ] Implement auth (email/password + Google OAuth)

@@ -17,20 +17,20 @@ export function RegisterPage() {
 
   const passwordMismatch = confirmPassword.length > 0 && confirmPassword !== password
 
-  function handleDetails(e: React.FormEvent) {
+  const handleDetails: React.ComponentProps<'form'>['onSubmit'] = (e) => {
     e.preventDefault()
     if (passwordMismatch || !confirmPassword) return
     // TODO: call backend to create account + send verification email
     setStep('verify')
   }
 
-  function handleVerify(e: React.FormEvent) {
+  const handleVerify: React.ComponentProps<'form'>['onSubmit'] = (e) => {
     e.preventDefault()
     // TODO: call backend to verify code and complete registration
   }
 
   return (
-    <div className="flex flex-col min-h-screen" style={{ background: 'var(--color-bg)' }}>
+    <div className="flex flex-col h-full overflow-y-auto" style={{ background: 'var(--color-bg)' }}>
       <Toolbar />
       <div className="flex flex-1 items-center justify-center">
         <div className="w-full max-w-md mx-4 rounded-lg p-8 shadow-lg" style={{ background: 'var(--color-sidebar)' }}>
@@ -85,7 +85,7 @@ export function RegisterPage() {
               <button
                 type="submit"
                 disabled={passwordMismatch || !confirmPassword}
-                className="w-full py-2.5 rounded-md text-sm font-semibold text-white mt-2 transition-opacity hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
+                className="w-full py-2.5 rounded-md text-sm font-semibold text-white mt-2 transition-opacity hover:opacity-90 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
                 style={{ background: 'var(--color-accent)' }}
               >
                 {t('REGISTER.CONTINUE')}
@@ -109,7 +109,7 @@ export function RegisterPage() {
 
               <button
                 type="submit"
-                className="w-full py-2.5 rounded-md text-sm font-semibold text-white mt-2 transition-opacity hover:opacity-90"
+                className="w-full py-2.5 rounded-md text-sm font-semibold text-white mt-2 transition-opacity hover:opacity-90 cursor-pointer"
                 style={{ background: 'var(--color-accent)' }}
               >
                 {t('REGISTER.VERIFY')}
