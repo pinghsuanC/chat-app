@@ -2,6 +2,14 @@ const zh = {
   TOOLBAR: {
     THEME: '主题',
     LANGUAGE: '语言',
+    LOGOUT: '退出登录',
+  },
+
+  LOGOUT: {
+    TITLE: '退出登录',
+    MESSAGE: '确定要退出登录吗？',
+    CONFIRM: '退出',
+    CANCEL: '取消',
   },
   SIDEBAR: {
     SEARCH_PLACEHOLDER: '查找或开始对话',

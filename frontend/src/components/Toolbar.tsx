@@ -3,12 +3,14 @@ import { useTranslation } from 'react-i18next'
 import { useTheme } from '../hooks/useTheme'
 import { themes, type ThemeId } from '../themes'
 import { languages, type LangId } from '../i18n'
+import { LogoutModal } from './LogoutModal'
 
 export function Toolbar() {
   const { themeId, setTheme } = useTheme()
   const { t, i18n } = useTranslation()
   const [themeOpen, setThemeOpen] = useState(false)
   const [langOpen, setLangOpen] = useState(false)
+  const [logoutOpen, setLogoutOpen] = useState(false)
   const themeRef = useRef<HTMLDivElement>(null)
   const langRef = useRef<HTMLDivElement>(null)
 
@@ -30,7 +32,7 @@ export function Toolbar() {
       <div className="relative" ref={langRef}>
         <button
           onClick={() => setLangOpen(o => !o)}
-          className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded transition-colors"
+          className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded transition-colors cursor-pointer"
           style={{ color: 'var(--color-textMuted)' }}
           onMouseEnter={e => (e.currentTarget.style.background = 'var(--color-hoverItem)')}
           onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
@@ -75,7 +77,7 @@ export function Toolbar() {
       <div className="relative" ref={themeRef}>
         <button
           onClick={() => setThemeOpen(o => !o)}
-          className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded transition-colors"
+          className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded transition-colors cursor-pointer"
           style={{ color: 'var(--color-textMuted)' }}
           onMouseEnter={e => (e.currentTarget.style.background = 'var(--color-hoverItem)')}
           onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
@@ -121,6 +123,28 @@ export function Toolbar() {
           </div>
         )}
       </div>
+
+      {/* Logout button */}
+      <button
+        onClick={() => setLogoutOpen(true)}
+        className="flex items-center p-1.5 rounded transition-colors ml-1 cursor-pointer"
+        style={{ color: 'var(--color-textMuted)' }}
+        onMouseEnter={e => {
+          e.currentTarget.style.background = 'var(--color-hoverItem)'
+          e.currentTarget.style.color = '#ef4444'
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.background = 'transparent'
+          e.currentTarget.style.color = 'var(--color-textMuted)'
+        }}
+        title={t('TOOLBAR.LOGOUT')}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
+          <path fillRule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v9a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM6.166 5.106a.75.75 0 0 1 0 1.06 8.25 8.25 0 1 0 11.668 0 .75.75 0 1 1 1.06-1.06c3.808 3.807 3.808 9.98 0 13.788-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788a.75.75 0 0 1 1.06 0Z" clipRule="evenodd" />
+        </svg>
+      </button>
+
+      {logoutOpen && <LogoutModal onCancel={() => setLogoutOpen(false)} />}
 
     </div>
   )

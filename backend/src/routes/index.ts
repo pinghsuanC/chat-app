@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import healthRouter from './health';
+import publicRouter from './public';
+import privateRouter from './private';
 
 const router = Router();
 
-router.use('/health', healthRouter);
-// router.use('/users', usersRouter);
-// router.use('/messages', messagesRouter);
+router.use(publicRouter);
+router.use(privateRouter);
 
 export default router;

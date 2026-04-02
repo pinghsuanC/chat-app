@@ -5,11 +5,13 @@ import { connectDb } from './config/db';
 import { connectRedis } from './config/redis';
 import router from './routes';
 import { errorHandler } from './middleware/errorHandler';
+import passport from './config/passport';
 
 const app = express();
 
 app.use(cors({ origin: env.corsOrigin }));
 app.use(express.json());
+app.use(passport.initialize());
 
 app.use('/api', router);
 app.use(errorHandler);

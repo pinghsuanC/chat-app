@@ -2,6 +2,14 @@ const en = {
   TOOLBAR: {
     THEME: 'Theme',
     LANGUAGE: 'Language',
+    LOGOUT: 'Log out',
+  },
+
+  LOGOUT: {
+    TITLE: 'Log out',
+    MESSAGE: 'Are you sure you want to log out?',
+    CONFIRM: 'Log out',
+    CANCEL: 'Cancel',
   },
   SIDEBAR: {
     SEARCH_PLACEHOLDER: 'Find or start a conversation',
